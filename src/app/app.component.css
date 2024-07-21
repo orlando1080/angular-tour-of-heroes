@@ -10,6 +10,11 @@ h2, h3 {
     font-weight: lighter;
 }
 
+a {
+    margin: 2px;
+    text-decoration: none;
+}
+
 body {
     margin: 2em;
 }
