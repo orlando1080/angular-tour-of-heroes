@@ -9,9 +9,9 @@ import { HEROES } from '../mock-heroes';
   styleUrl: './heroes.component.css'
 })
 export class HeroesComponent {
-  selectedHero?: IHero;
+  public selectedHero?: IHero;
 
-  heroes: IHero[] = HEROES;
+  public heroes: IHero[] = HEROES;
   
   public onSelect(hero: IHero): void {
     this.selectedHero = hero;
