@@ -16,7 +16,7 @@ export class DashboardComponent {
     this.getHeroes();
   }
 
-  getHeroes(): void {
+  public getHeroes(): void {
     this.heroService.getHeroes().subscribe((heroes) => this.heroes = heroes.slice(1, 5));
   }
 }

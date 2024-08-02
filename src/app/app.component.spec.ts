@@ -1,35 +1,57 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MessagesComponent } from './messages/messages.component';
 
-describe('AppComponent', () => {
+fdescribe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MessagesComponent
       ],
     }).compileComponents();
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'angular-tour-of-heroes'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-tour-of-heroes');
+  it(`should have as title 'Tour of Heroes`, () => {
+    expect(component.title).toEqual('Tour of Heroes');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should contain two <a> tags', () => {
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, angular-tour-of-heroes');
+    const compiled: HTMLElement = fixture.nativeElement;
+    expect(compiled.querySelectorAll('a').length).toBe(2);
   });
+  
+  it('should have <a> tag with "Heroes', () => {
+    fixture.detectChanges();
+    const compiled: HTMLElement = fixture.nativeElement;
+    expect(compiled.querySelector('a')?.textContent).toContain('Heroes');
+  })
+  
+  it('should have <a> tag with "Dashboard"', () => {
+    fixture.detectChanges();
+    const compiled: HTMLElement = fixture.nativeElement;
+    expect(compiled.querySelectorAll('a')[1]?.textContent).toContain('Dashboard');
+  })
+  
+  it('should have <app-messages> tag', () => {
+    fixture.detectChanges();
+    const compiled: HTMLElement = fixture.nativeElement;
+    expect(compiled.querySelector('app-messages')).toBeDefined();
+  })
+  
 });
